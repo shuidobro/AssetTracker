@@ -31,7 +31,7 @@ class AssetTracker {
   String
     readLatLon(void);
   String
-    readLatDegrees(void),
+    readLatDegrees(void);
   String
     readLonDegrees(void);
  private:
