@@ -33,6 +33,16 @@ float AssetTracker::readLon(){
     return gps.longitude;
 }
 
+String readLatDegrees::readLatLon(){
+    String lat = String::format("%f",gps.latitudeDegrees);
+    return lat;
+}
+
+String readLonDegrees::readLatLon(){
+    String lon = String::format("%f",gps.longitudeDegrees);
+    return lon;
+}
+
 String AssetTracker::readLatLon(){
     String latLon = String::format("%f,%f",gps.latitudeDegrees,gps.longitudeDegrees);
     return latLon;
