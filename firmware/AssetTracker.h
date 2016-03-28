@@ -4,11 +4,11 @@
 #ifndef AssetTracker_h
 #define AssetTracker_h
 
-class AssetTracker_SHD {
+class AssetTracker {
 
  public:
 
-  AssetTracker_SHD();
+  AssetTracker();
 
   void
     begin(void),
