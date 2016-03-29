@@ -1,4 +1,4 @@
-#include "AssetTracker.h"
+#include "AssetTracker_SHD.h"
 #include "math.h"
 
 //----------------- Tracker ----------------//
@@ -8,11 +8,11 @@
 Adafruit_GPS gps = Adafruit_GPS();
 Adafruit_LIS3DH accel = Adafruit_LIS3DH(A2, A5, A4, A3);
 
-AssetTracker::AssetTracker(){
+AssetTracker_SHD::AssetTracker_SHD(){
 
 }
 
-void AssetTracker::begin(){
+void AssetTracker_SHD::begin(){
     accel.begin(LIS3DH_DEFAULT_ADDRESS);
     
     // Default to 5kHz low-power sampling
@@ -25,30 +25,30 @@ void AssetTracker::begin(){
     // gpsOn();
 }
 
-float AssetTracker::readLat(){
+float AssetTracker_SHD::readLat(){
     return gps.latitude;
 }
 
-float AssetTracker::readLon(){
+float AssetTracker_SHD::readLon(){
     return gps.longitude;
 }
 
-String AssetTracker::readLatDegrees(){
+String AssetTracker_SHD::readLatDegrees(){
     String lat = String::format("%f", gps.latitudeDegrees);
     return lat;
 }
 
-String AssetTracker::readLonDegrees(){
+String AssetTracker_SHD::readLonDegrees(){
     String lon = String::format("%f", gps.longitudeDegrees);
     return lon;
 }
 
-String AssetTracker::readLatLon(){
+String AssetTracker_SHD::readLatLon(){
     String latLon = String::format("%f,%f", gps.latitudeDegrees,gps.longitudeDegrees);
     return latLon;
 }
 
-void AssetTracker::gpsOn(){
+void AssetTracker_SHD::gpsOn(){
     // Power to the GPS is controlled by a FET connected to D6
     pinMode(D6,OUTPUT);
     digitalWrite(D6,LOW);
@@ -62,15 +62,15 @@ void AssetTracker::gpsOn(){
     delay(500);
 }
 
-void AssetTracker::gpsOff(){
+void AssetTracker_SHD::gpsOff(){
     digitalWrite(D6,HIGH);
 }
 
-char* AssetTracker::preNMEA(){
+char* AssetTracker_SHD::preNMEA(){
     return gps.lastNMEA();
 }
 
-bool AssetTracker::gpsFix(){
+bool AssetTracker_SHD::gpsFix(){
     if(gps.latitude == 0.0){
         return false;
     }
@@ -80,12 +80,12 @@ bool AssetTracker::gpsFix(){
     //return gps.fix;
 }
 
-// char AssetTracker::checkGPS(){
+// char AssetTracker_SHD::checkGPS(){
 //     char c = gps.read();
 //     return c;
 // }
 
-void AssetTracker::updateGPS(){
+void AssetTracker_SHD::updateGPS(){
     char c = gps.read();
       // if a sentence is received, we can check the checksum, parse it...
   if (gps.newNMEAreceived()) {
@@ -101,22 +101,22 @@ void AssetTracker::updateGPS(){
   }
 }
 
-int AssetTracker::readX(){
+int AssetTracker_SHD::readX(){
     accel.read();
     return accel.x;
 }
 
-int AssetTracker::readY(){
+int AssetTracker_SHD::readY(){
     accel.read();
     return accel.y;
 }
 
-int AssetTracker::readZ(){
+int AssetTracker_SHD::readZ(){
     accel.read();
     return accel.z;
 }
 
-int AssetTracker::readXYZmagnitude(){
+int AssetTracker_SHD::readXYZmagnitude(){
     accel.read();
     int magnitude = sqrt((accel.x*accel.x)+(accel.y*accel.y)+(accel.z*accel.z));
     return magnitude;

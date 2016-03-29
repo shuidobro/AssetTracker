@@ -10,7 +10,7 @@ device has been on for at least this long!
 ---------------------------------------------------------------*/
 
 // Getting the library
-#include "AssetTracker/AssetTracker.h"
+#include "AssetTracker/AssetTracker_SHD.h"
 
 // Set whether you want the device to publish data to the internet by default here.
 // 1 will Particle.publish AND Serial.print, 0 will just Serial.print
@@ -29,7 +29,7 @@ int delayMinutes = 10;
 int accelThreshold = 12000;
 
 // Creating an AssetTracker named 't' for us to reference
-AssetTracker t = AssetTracker();
+AssetTracker_SHD t = AssetTracker_SHD();
 
 // A FuelGauge named 'fuel' for checking on the battery state
 FuelGauge fuel;
